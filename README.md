@@ -1,1 +1,1 @@
-# Auction_Project
+# DJANGO/Auction_Project
