@@ -1,0 +1,63 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+     
+      <!-- section --> 
+<div class="About-bg">
+   <div class="container">
+      <div class="row">
+         
+        <div class="col-md-12">
+            <div class="aboutheading">
+                {% for auction in auctions %}
+               <h3>{{ auction.name }} MEZATI</span></h3>
+               {% endfor %}
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+      <div class="section layout_padding">
+         <div class="container" style="background-color:bisque">
+            {% for auction in auctions %}
+            <div class="row mb-5">
+               {% for product in auction.product.all %}
+               <div class="col-md-6">
+                  <img src="{{ product.image.url }}" alt="#" />
+               </div>
+               <div class="col-md-6">
+                  <div class="full blog_cont">
+                     <h3>{{ auction.name }}</h3>
+                     <h4>{{ product.name }}</h4>
+                     <p class="mb-3">{{ auction.content }}</p>
+                     <h5>Başlangıç Fiyatı :{{ auction.starting_price }}</h5>
+                     <h5>Şimdiki Fiyat :{{ auction.current_price }}</h5>
+                     {% if user.is_authenticated %}
+                     <h5>Pey :{{ auction.increase_price }}</h5>
+                     <form action="{% url 'stake' auction.id  %}" method="POST">
+                        {% csrf_token %}
+                        
+                    
+                        <button id="return" class="btn btn-primary">Pey Ver</button>
+                        
+                    </form>
+                    {% endif %}
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+            {% endfor %}
+
+
+
+
+
+
+
+     
+      {% endblock content %}
+
+      

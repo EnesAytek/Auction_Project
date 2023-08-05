@@ -1,0 +1,48 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+     
+      <!-- section --> 
+<div class="About-bg">
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="aboutheading">
+               <h3>MY AUCTİONS</span></h3>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+      <div class="section layout_padding">
+         <div class="container" style="background-color:bisque">
+           {% for auction in auctions %}
+            <div class="row mb-5">
+               {% for product in auction.product.all %}
+               <div class="col-md-6">
+                  <img src="{{ product.image.url }}" alt="#" />
+               </div>
+               <div class="col-md-6">
+                  <div class="full blog_cont">
+                     <a href="{% url 'auction_detail' auction.slug %}"><h4>{{ auction.name }}</h4></a>
+                     <h5>{{ product.name }}</h5>
+                     <p>{{ auction.content }}</p>
+                     <h5>Başlangıç Fiyatı :{{ auction.starting_price }}</h5>
+                     <h5>Şimdiki Fiyat :{{ auction.current_price }}</h5>
+                  </div>
+               </div>
+               {% endfor %}
+            </div>
+            {% endfor %}
+
+
+
+
+
+
+
+     
+      {% endblock content %}
