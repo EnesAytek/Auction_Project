@@ -29,7 +29,11 @@ def my_auctions(request):
     context = dict(auctions=auctions)
     return render(request,'my_auctions.html',context)
 
-
+def my_last_bids(request):
+    user = request.user
+    auctions = user.winner.all()
+    context = dict(auctions=auctions)
+    return render(request,'my_last_bids.html', context)
 
 
 def auction_detail(request, auction_slug):
