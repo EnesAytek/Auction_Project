@@ -7,6 +7,7 @@ urlpatterns = [
     path('', index, name='index' ),
     path('all-auctions/', all_auctions, name='all_auctions'),
     path('my-auctions/', my_auctions, name='my_auctions'),
+    path('my-last-bids/', my_last_bids, name='my_last_bids'),
     path('auction/<slug:auction_slug>/', auction_detail, name='auction_detail'),
     path('stake/<int:auction_id>/', stake, name='stake'),
     path('register/', register, name='register'),
